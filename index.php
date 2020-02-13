@@ -29,27 +29,28 @@ class blackjack {
 
     //methods:
     function hit() {
-        $randnum = rand(1, 11);
-        $this->score = ($_SESSION['hit']);
-        $_SESSION['hit'] = $this->score += $randnum;
-        echo $_SESSION['hit'];
-        if ($_SESSION['hit'] > 21) {
-            echo "you suck major balls at this";
+        $randnum = rand(1, 11); //GENERATE ANY RANDOM NUMBER BETWEEN 1 & 11
+        $this->score = ($_SESSION['score']);
+        $_SESSION['score'] = $this->score += $randnum;
+        echo $_SESSION['score'];
+        if ($_SESSION['score'] > 21) {
+            echo "your luck sucks at this";
         }
-        return $_SESSION['hit'];
+        return $_SESSION['score'];
     }
 
     function stand() {
-
+        echo "dealers be dealin'";
     }
+
 
     function surrender() {
         echo "That's what I thought...";
     }
 }
 
-if (isset($_POST['hit'])) {
-
-}
+/*if (isset($_POST['hit'])) {
+    hit();
+}*/
 
 require 'game.php';
