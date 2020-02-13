@@ -1,6 +1,6 @@
 <?php
 
-new blackjack {}
+//new blackjack {}
 
 
 ?>
@@ -15,13 +15,13 @@ new blackjack {}
 <header>
     <h1>BJ</h1>
 </header>
-<div id="score">
-    <p>Your score: <?php echo ?></p>
+<div>
+    <p id="score">Your score:</p>
 </div>
 <div id="buttons">
-    <button name="hit">Hit me!</button>
-    <button name="stand">Stand</button>
-    <button name="wuss">Surrender</button>
+    <button type="submit" name="hit">Hit me!</button>
+    <button type="submit" name="stand">Stand</button>
+    <button type="submit" name="wuss">Surrender</button>
 </div>
 
 </body>
