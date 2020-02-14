@@ -1,42 +1,35 @@
 <?php
 
+
+declare(strict_types = 1);
+
+require 'blackjack.php';
+
+session_start();
+
+
+function whatIsHappening() {
+    echo '<h2>$_GET</h2>';
+    var_dump($_GET);
+    echo '<h2>$_POST</h2>';
+    var_dump($_POST);
+    echo '<h2>$_COOKIE</h2>';
+    var_dump($_COOKIE);
+    echo '<h2>$_SESSION</h2>';
+    var_dump($_SESSION);
+}
+
 $playboi = new blackjack;
 
-/*if ($_SERVER['REQUEST_METHOD'] == "POST") {
-	if (isset($_POST['hit'])) {
-		$playboi->hit();
-	}
-}*/
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['hit'])) {
+        $playboi->hit();
+    }
+}
+
+
+
+
+
 
 ?>
-<!DOCTYPE>
-<html>
-<head>
-    <meta charset="UTF-8" lang="eng">
-	<title>b l a c c j a c c</title>
-</head>
-
-
-<body>
-<header>
-    <h1>b l a c c o j a c c o</h1>
-</header>
-<div>
-    <p id="score">Your score:
-	    <?php if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            if (isset($_POST['hit'])) {
-                $playboi->hit();
-            }
-        } ?>
-    </p>
-</div>
-<div id="buttons">
-	<form method="post">
-		<button type="submit" name="hit">Hit me!</button>
-		<button type="submit" name="stand">Stand</button>
-		<button type="submit" name="wuss">Surrender</button>
-	</form>
-</div>
-
-</body>
-</html>
