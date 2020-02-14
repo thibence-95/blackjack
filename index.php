@@ -1,14 +1,12 @@
 <?php
-
 require 'game.php';
-
 ?>
 
 <!DOCTYPE>
 <html>
 <head>
     <meta charset="UTF-8" lang="eng">
-	<title>b l a c c j a c c</title>
+	<title>b l a c c o j a c c o</title>
 </head>
 
 

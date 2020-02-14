@@ -1,12 +1,12 @@
 <?php
+require "blackjack.php";
 
-
-declare(strict_types = 1);
-
-require 'blackjack.php';
+/*ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);*/
 
 session_start();
-
+//whatIsHappening();
 
 function whatIsHappening() {
     echo '<h2>$_GET</h2>';
@@ -19,17 +19,29 @@ function whatIsHappening() {
     var_dump($_SESSION);
 }
 
-$playboi = new blackjack;
+$playboi = new Blackjack;
+
+if (isset($_SESSION['playboi'])) {
+    $playboi = new Blackjack($_SESSION['playboi']);
+}
+if (isset($_SESSION['playboi']) == 0) {
+
+}
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['hit'])) {
         $playboi->hit();
+        $_SESSION['playboi'] = $playboi->getScore();
+        if ($playboi->getScore() > 21) {
+            echo "get flooped";
+            session_destroy();
+        }
+    }
+    if ($_POST['stand']) {
+    	$playboi->stand();
+    }
+    if ($_POST['wuss']) {
+    	$playboi->surrender();
     }
 }
-
-
-
-
-
-
-?>
