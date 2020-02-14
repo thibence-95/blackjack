@@ -21,6 +21,7 @@ require 'game.php';
 </div>
 <div id="buttons">
 	<form method="post">
+		<button type="submit" name="start">Start</button>
 		<button type="submit" name="hit">Hit me!</button>
 		<button type="submit" name="stand">Stand</button>
 		<button type="submit" name="wuss">Surrender</button>

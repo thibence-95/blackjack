@@ -20,22 +20,44 @@ function whatIsHappening() {
 }
 
 $playboi = new Blackjack;
+$score = new getScore();
+
 
 if (isset($_SESSION['playboi'])) {
     $playboi = new Blackjack($_SESSION['playboi']);
 }
-if (isset($_SESSION['playboi']) == 0) {
+else {
+    $_SESSION['playboi'] = 0;
+    $playboi = new Blackjack($_SESSION['playboi']);
+}
+
+if ((isset($_SESSION['score']))) {
 
 }
 
+if (isset($_SESSION['dealer'])) {
+    $playboi = new Blackjack($_SESSION['dealer']);
+}
+else {
+    $_SESSION['dealer'] = 0;
+    $playboi = new Blackjack($_SESSION['dealer']);
+}
+
+
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['start'])) {
+        $playboi->startGame();
+    }
     if (isset($_POST['hit'])) {
         $playboi->hit();
         $_SESSION['playboi'] = $playboi->getScore();
         if ($playboi->getScore() > 21) {
             echo "get flooped";
             session_destroy();
+        } elseif ($playboi->getScore == 21) {
+            echo "haters will say you cheated";
         }
     }
     if ($_POST['stand']) {
