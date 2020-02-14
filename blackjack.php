@@ -14,7 +14,7 @@ class Blackjack {
         array_push($this->cards, $randCard1, $randCard2);
         $sum = array_sum($this->cards);
 
-        echo implode("and", $this->cards);
+        echo implode(" and ", $this->cards);
         echo "<br>your score is ".$sum;
     }
     function hit() {
