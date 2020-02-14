@@ -13,7 +13,7 @@ class Blackjack {
         $randCard2 = rand(1, 11);
         array_push($this->cards, $randCard1, $randCard2);
         $sum = array_sum($this->cards);
-
+        $this->score = $sum;
         echo implode(" and ", $this->cards);
         echo "<br>your score is ".$sum;
     }
@@ -21,6 +21,7 @@ class Blackjack {
         $randnum = rand(1, 11);
         $this->score += $randnum;
         echo "<br> $this->score";
+
     }
     function getScore() {
         return $this->score;

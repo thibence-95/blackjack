@@ -20,15 +20,18 @@ function whatIsHappening() {
 }
 
 $playboi = new Blackjack;
-$score = new getScore();
+$dealboi = new Blackjack;
+$score = $playboi->getScore();
 
 
 if (isset($_SESSION['playboi'])) {
-    $playboi = new Blackjack($_SESSION['playboi']);
+    $playboi = new Blackjack;
+    $_SESSION['playboi'] = $playboi->score;
 }
 else {
     $_SESSION['playboi'] = 0;
-    $playboi = new Blackjack($_SESSION['playboi']);
+    $playboi = new Blackjack;
+    $_SESSION['playboi'] = $playboi->score;
 }
 
 if ((isset($_SESSION['score']))) {
@@ -36,11 +39,11 @@ if ((isset($_SESSION['score']))) {
 }
 
 if (isset($_SESSION['dealer'])) {
-    $playboi = new Blackjack($_SESSION['dealer']);
+    $dealboi = new Blackjack($_SESSION['dealer']);
 }
 else {
     $_SESSION['dealer'] = 0;
-    $playboi = new Blackjack($_SESSION['dealer']);
+    $dealboi = new Blackjack($_SESSION['dealer']);
 }
 
 
@@ -49,8 +52,11 @@ else {
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['start'])) {
         $playboi->startGame();
+        $_SESSION['playboi'] = $playboi->score;
+
     }
     if (isset($_POST['hit'])) {
+
         $playboi->hit();
         $_SESSION['playboi'] = $playboi->getScore();
         if ($playboi->getScore() > 21) {
